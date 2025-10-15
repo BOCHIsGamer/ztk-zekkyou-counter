@@ -1,0 +1,553 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* 紫ベースの背景色に変更 */
+    background-color: #f3e5f5; /* 薄いパープル */
+    color: #333;
+}
+
+h1 {
+    /* 濃い紫に変更 */
+    color: #6a1b9a; 
+    margin-bottom: 5px;
+}
+
+/* 説明文のスタイル */
+.description {
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+}
+.description a {
+    color: #9c27b0; /* 紫系のリンク色 */
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.counters-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.counter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 新しいラベル部分のスタイル */
+.new-label-box {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+    min-width: 150px;
+    text-align: center;
+}
+.new-label-box p {
+    margin: 0;
+}
+/* これらの色は変更なし */
+.counter-group:nth-child(1) .new-label-box p { color: #004d40; }
+.counter-group:nth-child(2) .new-label-box p { color: #f57f17; }
+.counter-group:nth-child(3) .new-label-box p { color: #b71c1c; }
+.counter-group:nth-child(4) .new-label-box p { color: #1b5e20; }
+
+
+.counter {
+    border-radius: 8px;
+    text-align: center;
+    flex-grow: 1;
+    padding: 10px 20px;
+    transition: transform 0.2s ease-in-out;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* ボタンとカウントの隙間を調整 */
+    gap: 5px; 
+}
+
+.counter:hover {
+    transform: scale(1.02);
+}
+
+/* 各カウンターのテーマカラー (変更なし) */
+.counter[data-id="1"] { background-color: #e0f2f7; border: 2px solid #2196f3; }
+.counter[data-id="2"] { background-color: #fffde7; border: 2px solid #ffeb3b; }
+.counter[data-id="3"] { background-color: #ffebee; border: 2px solid #f44336; }
+.counter[data-id="4"] { background-color: #e8f5e9; border: 2px solid #4caf50; }
+
+/* カウンターごとの数値の色 (変更なし) */
+.counter[data-id="1"] .count { color: #1976d2; }
+.counter[data-id="2"] .count { color: #fbc02d; }
+.counter[data-id="3"] .count { color: #d32f2f; }
+.counter[data-id="4"] .count { color: #388e3c; }
+
+.count {
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    flex-grow: 1;
+}
+
+/* ボタンのスタイル */
+.btn-plus, .btn-minus {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #455a64; /* 変更なし */
+    font-weight: bold;
+    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-plus:hover, .btn-minus:hover {
+    opacity: 0.7;
+}
+
+/* チェックボックスのコンテナスタイル */
+.checkbox-container {
+    display: block;
+    text-align: center;
+}
+
+.checkbox-container label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.checkbox-container label:hover {
+    background-color: #e0e0e0; /* 変更なし */
+}
+
+.checkbox-container input[type="checkbox"] {
+    transform: scale(2.0);
+    margin: 0;
+    vertical-align: middle;
+}
+
+.checkbox-container span {
+    display: block;
+    font-size: 12px;
+    color: #999; /* 変更なし */
+    user-select: none;
+    margin-top: 5px;
+}
+
+/* 全クリア部分のスタイルも調整 */
+.all-clear-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    /* 紫系の背景色に変更 */
+    background-color: #e1bee7; /* 薄いラベンダー */
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#all-clear-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #e57373; /* 赤色 (変更なし) */
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out;
+}
+#all-clear-btn:hover { background-color: #ef5350; }
+
+/* 新しい「元に戻す」ボタンのスタイル */
+#undo-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #64b5f6; /* 青色 (変更なし) */
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out;
+}
+#undo-btn:hover { background-color: #42a5f5; }
+
+/* 結果表示部分のスタイル */
+.result-display, .log-display-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+/* コピー説明文の配置変更に対応 */
+.copy-info {
+    margin-top: -10px; /* テキストボックスとの間隔を調整 */
+}
+
+#result-text {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* ログ表示用テキストボックスのスタイル */
+.log-display-container {
+    margin-top: 40px;
+    gap: 15px;
+    text-align: center;
+}
+
+/* ログ表示部分の枠線を太くする */
+#log-display {
+    width: 100%;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    border: 2px solid #ccc; 
+    border-radius: 8px;
+    background-color: #f9f9f9; /* 変更なし */
+    cursor: pointer;
+    user-select: none;
+    height: 150px;
+    overflow-y: scroll;
+    resize: none;
+    margin-bottom: 0;
+}
+
+/* セクションタイトルと説明文の共通スタイル */
+.section-title, .copy-info {
+    text-align: center;
+}
+
+/* セクションタイトルのスタイル */
+.section-title {
+    font-size: 14px;
+    color: #333; /* 変更なし */
+    margin: 0;
+}
+
+/* ※から始まる説明文のスタイル */
+.copy-info {
+    font-size: 12px;
+    color: #999; /* 変更なし */
+    line-height: 1.5;
+}
+
+
+/* 新しいログボタンコンテナ */
+.log-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* ログクリアボタンと新規追加ボタンの共通スタイル */
+#log-and-count-clear-btn,
+#start-stream-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: white;
+}
+
+#log-and-count-clear-btn {
+    background-color: #ef9a9a; /* 赤系 (変更なし) */
+}
+#log-and-count-clear-btn:hover {
+    background-color: #e57373;
+}
+
+#start-stream-btn {
+    background-color: #4db6ac; /* 緑系 (変更なし) */
+}
+#start-stream-btn:hover {
+    background-color: #26a69a;
+}
+
+/* ポップアップのスタイル */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 変更なし */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.3s linear;
+}
+
+.popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-content {
+    background-color: #fff; /* 変更なし */
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    transform: scale(0.7);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.popup-overlay.show .popup-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa; /* 変更なし */
+}
+.close-btn:hover {
+    color: #333;
+}
+
+/* 配信時間設定UIのスタイル */
+.start-time-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    background-color: transparent; /* 変更なし */
+    padding: 0;
+    box-shadow: none;
+    max-width: 500px;
+    width: 100%;
+}
+
+.start-time-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.time-picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 0;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.time-input {
+    width: 50px;
+    text-align: center;
+    font-size: 20px;
+    padding: 2px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #f9f9f9; /* 変更なし */
+    -moz-appearance: textfield;
+}
+
+/* Chrome, Safari, Edgeで矢印を非表示にする */
+.time-input::-webkit-outer-spin-button,
+.time-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ▲▼ボタンのサイズを半分に */
+.up-btn, .down-btn {
+    background: none;
+    border: none;
+    font-size: 9px;
+    cursor: pointer;
+    color: #999; /* 変更なし */
+    line-height: 0.5;
+    padding: 0 5px;
+}
+.up-btn:hover, .down-btn:hover {
+    color: #555;
+}
+
+#set-start-time-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    /* 紫系のボタン色に変更 */
+    background-color: #e0b0e0; /* 薄いラベンダー */
+    color: #4a148c; /* 濃い紫 */
+    font-weight: normal;
+    font-size: 12px;
+    transition: background-color 0.2s ease-in-out;
+}
+#set-start-time-btn:hover {
+    background-color: #d8a0d8; /* ホバーで少し濃く */
+}
+
+/* 日付表示のスタイル */
+#start-date-display {
+    font-size: 16px;
+    color: #aaa; /* 変更なし */
+    /* 日付と時刻の行を揃えるために調整 */
+    line-height: 38px; /* 入力ボックスの高さに合わせて調整 */
+    height: 38px;
+    display: flex;
+    align-items: center;
+}
+
+/* コロンのスタイル */
+.colon {
+    font-size: 20px;
+    color: #333; /* 変更なし */
+    font-weight: bold;
+    line-height: 38px;
+}
+
+/* 新しい説明文のスタイル */
+#swipe-info {
+    font-size: 12px;
+    color: #999; /* 変更なし */
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+/* 画面上部に表示するメッセージのスタイル */
+.popup-message {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 紫系の背景色に変更 */
+    background-color: rgba(123, 31, 162, 0.9); /* 濃いめの紫 */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+.popup-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* スマートフォンでの表示を最適化 */
+@media (max-width: 768px) {
+    body {
+        /* 全体を75%に縮小し、上部中央を基準にする */
+        transform: scale(0.75);
+        transform-origin: top center;
+        width: 133.33%; /* 縮小率の逆数 (1 / 0.75) で横幅を広げる */
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* 横スクロールバーを非表示にする */
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+    
+    .counter-group {
+        padding: 15px;
+    }
+
+    .new-label-box p {
+        font-size: 20px;
+        min-width: 120px;
+    }
+
+    .count {
+        font-size: 48px;
+    }
+
+    .btn-plus, .btn-minus {
+        font-size: 32px;
+    }
+
+    #undo-btn, #all-clear-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .log-buttons-container button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
