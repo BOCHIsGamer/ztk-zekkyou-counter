@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👻絶叫特等席 - 絶叫カウンタ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>👻絶叫特等席 - 絶叫カウンタ</h1>
+    <div class="description">
+        <p>キーボード入力が半角モードでないと、ショートカットキーはご利用いただけません。<br>ショートカットキーの説明は<a href="#" id="show-image">こちら</a>をご覧ください。</p>
+    </div>
+
+    <div class="main-container">
+        <div class="counters-list">
+            <div class="counter-group">
+                <div class="new-label-box" data-id="1">
+                    <p>🥶囲炉裏</p>
+                </div>
+                <div class="counter" data-id="1">
+                    <button class="btn-minus" data-action="minus" data-counter="1">－</button>
+                    <div class="count" id="counter1">0</div>
+                    <button class="btn-plus" data-action="plus" data-counter="1">＋</button>
+                </div>
+                <div class="checkbox-container">
+                    <label>
+                        <input type="checkbox" data-id="1" class="clipboard-checkbox" checked>
+                        <span>コピー対象</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="counter-group">
+                <div class="new-label-box" data-id="2">
+                    <p>⚡️スパーク</p>
+                </div>
+                <div class="counter" data-id="2">
+                    <button class="btn-minus" data-action="minus" data-counter="2">－</button>
+                    <div class="count" id="counter2">0</div>
+                    <button class="btn-plus" data-action="plus" data-counter="2">＋</button>
+                </div>
+                <div class="checkbox-container">
+                    <label>
+                        <input type="checkbox" data-id="2" class="clipboard-checkbox" checked>
+                        <span>コピー対象</span>
+                    </label>
+                </div>
+            </div>
+             
+            <div class="counter-group">
+                <div class="new-label-box" data-id="3">
+                    <p>🥵Fe：</p>
+                </div>
+                <div class="counter" data-id="3">
+                    <button class="btn-minus" data-action="minus" data-counter="3">－</button>
+                    <div class="count" id="counter3">0</div>
+                    <button class="btn-plus" data-action="plus" data-counter="3">＋</button>
+                </div>
+                <div class="checkbox-container">
+                    <label>
+                        <input type="checkbox" data-id="3" class="clipboard-checkbox" checked>
+                        <span>コピー対象</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="counter-group">
+                <div class="new-label-box" data-id="4">
+                    <p>🌿えふやん</p>
+                </div>
+                <div class="counter" data-id="4">
+                    <button class="btn-minus" data-action="minus" data-counter="4">－</button>
+                    <div class="count" id="counter4">0</div>
+                    <button class="btn-plus" data-action="plus" data-counter="4">＋</button>
+                </div>
+                <div class="checkbox-container">
+                    <label>
+                        <input type="checkbox" data-id="4" class="clipboard-checkbox" checked>
+                        <span>コピー対象</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+         
+        <div class="all-clear-container">
+            <button id="undo-btn">一つ前に戻る</button>
+            <button id="all-clear-btn">絶叫回数をクリア</button>
+        </div>
+        
+        <div class="result-display">
+            <p class="section-title">絶叫回数結果</p>
+            <input type="text" id="result-text" readonly>
+            <p class="copy-info">※クリックかタップでコピー</p>
+        </div>
+        
+        <div class="log-display-container">
+            <p class="section-title">［日付T時刻, 経過時間, 動き］を記録</p>
+
+            <div class="start-time-container">
+                <div class="start-time-row">
+                    <div id="start-date-display"></div>
+                    <div class="time-picker">
+                        <div class="time-unit">
+                            <button class="up-btn" data-unit="hour">▲</button>
+                            <input type="number" id="start-hour" class="time-input" min="0" max="23" value="00">
+                            <button class="down-btn" data-unit="hour">▼</button>
+                        </div>
+                        <span class="colon">:</span>
+                        <div class="time-unit">
+                            <button class="up-btn" data-unit="minute">▲</button>
+                            <input type="number" id="start-minute" class="time-input" min="0" max="59" value="00">
+                            <button class="down-btn" data-unit="minute">▼</button>
+                        </div>
+                        <span class="colon">:</span>
+                        <div class="time-unit">
+                            <button class="up-btn" data-unit="second">▲</button>
+                            <input type="number" id="start-second" class="time-input" min="0" max="59" value="00">
+                            <button class="down-btn" data-unit="second">▼</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="swipe-info">※スクロールかスワイプで変更</div>
+                <button id="set-start-time-btn">配信時間設定</button>
+            </div>
+
+            <textarea id="log-display" readonly></textarea>
+            <p class="copy-info">※クリックかタップでコピー</p>
+            <div class="log-buttons-container">
+                <button id="start-stream-btn">現時刻から記録</button>
+                <button id="log-and-count-clear-btn">ログと絶叫回数をクリア</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="popup-message" class="popup-message">
+        <p>配信時間を基準にログを更新しました</p>
+    </div>
+
+    <div id="popup" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p id="image-placeholder">ここに画像貼付</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
