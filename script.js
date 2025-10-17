@@ -1,4 +1,3 @@
-
 const counters = document.querySelectorAll('.count');
 const allClearBtn = document.getElementById('all-clear-btn');
 const undoBtn = document.getElementById('undo-btn');
