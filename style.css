@@ -224,6 +224,7 @@ h1 {
     background-color: #fff;
     cursor: pointer;
     user-select: none;
+    box-sizing: border-box;
 }
 
 .log-display-container {
@@ -471,6 +472,13 @@ h1 {
 
 /* 縦幅が短い時のコンパクト表示（PC用） - 優先度高 */
 @media (max-height: 400px) and (min-width: 701px), (max-height: 400px) and (max-width: 700px) and (pointer: fine) {
+    body {
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
     h1, .description, .all-clear-container, .log-display-container {
         display: none;
     }
@@ -478,7 +486,8 @@ h1 {
     .main-container {
         flex-direction: row;
         gap: 20px;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
     }
     
     .counters-list {
@@ -557,10 +566,20 @@ h1 {
         font-size: 16px;
         padding: 8px;
     }
+    
+    .copy-info {
+        margin-top: -10px;
+    }
 }
 
 /* 横幅が短い時のコンパクト表示（PC用のみ） */
 @media (max-width: 700px) and (pointer: fine) and (min-height: 401px) {
+    body {
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
     h1, .description, .all-clear-container, .log-display-container {
         display: none;
     }
