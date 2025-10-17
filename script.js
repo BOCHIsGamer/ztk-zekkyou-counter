@@ -1,4 +1,4 @@
-// カウンターの要素を取得
+
 const counters = document.querySelectorAll('.count');
 const allClearBtn = document.getElementById('all-clear-btn');
 const undoBtn = document.getElementById('undo-btn');
@@ -8,8 +8,6 @@ const showImageLink = document.getElementById('show-image');
 const popup = document.getElementById('popup');
 const closeBtn = document.querySelector('.close-btn');
 const clipboardCheckboxes = document.querySelectorAll('.clipboard-checkbox');
-
-// 新しい要素を取得
 const logAndCountClearBtn = document.getElementById('log-and-count-clear-btn');
 const startStreamBtn = document.getElementById('start-stream-btn');
 const setStartTimeBtn = document.getElementById('set-start-time-btn');
@@ -20,13 +18,11 @@ const timeInputs = document.querySelectorAll('.time-input');
 const startDateDisplay = document.getElementById('start-date-display');
 const popupMessage = document.getElementById('popup-message');
 
-// 履歴とログを保存する配列を定義
 let history = [];
 let logHistory = [];
 const MAX_HISTORY = 20;
 let startTime = null;
 
-// 現在のカウンターの状態を保存する関数
 function saveState() {
     const currentState = Array.from(counters).map(counter => ({
         id: counter.id,
@@ -38,7 +34,6 @@ function saveState() {
     }
 }
 
-// ログを記録する関数
 function logAction(counterId, action) {
     if (startTime === null) {
         startTime = Date.now();
@@ -53,7 +48,6 @@ function logAction(counterId, action) {
     const minutes = Math.floor((absSeconds % 3600) / 60);
     const seconds = absSeconds % 60;
     
-    // 日付と時刻のフォーマットをyyyy-mm-ddThh:mm:ss形式に変更
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
@@ -90,13 +84,11 @@ function logAction(counterId, action) {
     updateLogDisplay();
 }
 
-// ログ表示を更新する関数
 function updateLogDisplay() {
     logDisplay.value = logHistory.join('\n');
     logDisplay.scrollTop = logDisplay.scrollHeight;
 }
 
-// 元に戻す処理を実行する関数
 function undo() {
     if (history.length > 1) {
         history.pop();
@@ -119,7 +111,6 @@ function undo() {
     }
 }
 
-// 結果表示を更新する関数
 function updateResultDisplay() {
     let result = [];
     const counterEmojis = {
@@ -140,7 +131,6 @@ function updateResultDisplay() {
     resultText.value = result.join('／');
 }
 
-// 画面上部にメッセージを表示する関数
 function showPopupMessage(message) {
     popupMessage.querySelector('p').textContent = message;
     popupMessage.classList.add('show');
@@ -149,18 +139,15 @@ function showPopupMessage(message) {
     }, 3000);
 }
 
-// 配信開始時刻を適用する関数
 function applyStartTime() {
     const hour = parseInt(startHourInput.value) || 0;
     const minute = parseInt(startMinuteInput.value) || 0;
     const second = parseInt(startSecondInput.value) || 0;
 
-    // 配信開始時刻として適用する時間を作成
     const newStartTimeDate = new Date();
     newStartTimeDate.setHours(hour, minute, second, 0);
     const newStartTime = newStartTimeDate.getTime();
 
-    // ログが存在しない場合
     if (logHistory.length === 0) {
         startTime = newStartTime;
         logAction(null, 'start-stream');
@@ -168,7 +155,6 @@ function applyStartTime() {
         return;
     }
 
-    // ログが存在する場合、経過時間のみを更新する
     const updatedLogHistory = logHistory.map(entry => {
         const parts = entry.split(',');
         const originalTime = new Date(parts[0]);
@@ -181,7 +167,6 @@ function applyStartTime() {
         const seconds = absSeconds % 60;
         const elapsedStr = `${sign}${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         
-        // ログエントリの形式を維持して更新
         return `${parts[0]},${elapsedStr},${parts.slice(2).join(',')}`;
     });
 
@@ -191,13 +176,11 @@ function applyStartTime() {
     showPopupMessage('配信時間を基準にログを更新しました');
 }
 
-// 初期化処理
 function initialize() {
     const now = new Date();
     const currentHour = now.getHours();
     const currentMinute = now.getMinutes();
 
-    // 時刻の初期値を設定
     let initialHour = currentHour;
     if (currentMinute > 30) {
         initialHour = (currentHour + 1) % 24;
@@ -206,7 +189,6 @@ function initialize() {
     startMinuteInput.value = '00';
     startSecondInput.value = '00';
 
-    // 日付の初期値を設定
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
@@ -216,9 +198,7 @@ function initialize() {
     updateResultDisplay();
 }
 
-// キーとカウンターのマッピングを定義
 const keyMap = {
-    // Counter 1
     'j': { action: 'plus', counterId: 'counter1' },
     'f': { action: 'plus', counterId: 'counter1' },
     'm': { action: 'minus', counterId: 'counter1' },
@@ -226,7 +206,6 @@ const keyMap = {
     'u': { action: 'clear', counterId: 'counter1' },
     'r': { action: 'clear', counterId: 'counter1' },
 
-    // Counter 2
     'k': { action: 'plus', counterId: 'counter2' },
     'd': { action: 'plus', counterId: 'counter2' },
     ',': { action: 'minus', counterId: 'counter2' },
@@ -234,7 +213,6 @@ const keyMap = {
     'i': { action: 'clear', counterId: 'counter2' },
     'e': { action: 'clear', counterId: 'counter2' },
 
-    // Counter 3
     'l': { action: 'plus', counterId: 'counter3' },
     's': { action: 'plus', counterId: 'counter3' },
     '.': { action: 'minus', counterId: 'counter3' },
@@ -242,7 +220,6 @@ const keyMap = {
     'o': { action: 'clear', counterId: 'counter3' },
     'w': { action: 'clear', counterId: 'counter3' },
 
-    // Counter 4
     ';': { action: 'plus', counterId: 'counter4' },
     'a': { action: 'plus', counterId: 'counter4' },
     '/': { action: 'minus', counterId: 'counter4' },
@@ -250,13 +227,11 @@ const keyMap = {
     'p': { action: 'clear', counterId: 'counter4' },
     'q': { action: 'clear', counterId: 'counter4' },
 
-    // 全クリアと戻る
     'h': { action: 'all-clear' },
     'g': { action: 'all-clear' },
     'b': { action: 'undo-action' },
     'n': { action: 'undo-action' },
     
-    // チェックボックスのショートカットキー
     '4': { action: 'toggle-checkbox', checkboxId: '1' },
     '3': { action: 'toggle-checkbox', checkboxId: '2' },
     '2': { action: 'toggle-checkbox', checkboxId: '3' },
@@ -267,10 +242,8 @@ const keyMap = {
     '0': { action: 'toggle-checkbox', checkboxId: '4' }
 };
 
-// 初期化処理を実行
 initialize();
 
-// キーボードイベントのリスナー
 document.addEventListener('keydown', (event) => {
     const key = event.key;
     if (keyMap[key]) {
@@ -310,7 +283,6 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// ボタンクリックイベントのリスナー
 document.addEventListener('click', (event) => {
     const target = event.target;
     const action = target.dataset.action;
@@ -339,28 +311,23 @@ document.addEventListener('click', (event) => {
     updateResultDisplay();
 });
 
-// 各チェックボックスのイベントリスナー
 clipboardCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('change', updateResultDisplay);
 });
 
-// 元に戻すボタンのイベントリスナー
 undoBtn.addEventListener('click', undo);
 
-// ログと絶叫回数クリアボタンのイベントリスナー
 logAndCountClearBtn.addEventListener('click', () => {
     logHistory = [];
-    startTime = null; // 基準時間をリセット
+    startTime = null;
     updateLogDisplay();
     
-    // 絶叫回数も0にリセット
     counters.forEach(counter => {
         counter.textContent = 0;
     });
     updateResultDisplay();
 });
 
-// 新しく追加した「配信開始から記録」ボタンのイベントリスナー
 startStreamBtn.addEventListener('click', () => {
     logHistory = [];
     startTime = null;
@@ -371,11 +338,9 @@ startStreamBtn.addEventListener('click', () => {
     });
     updateResultDisplay();
     
-    // 動作完了後にログを記録
     logAction(null, 'start-stream');
 });
 
-// テキストボックスのクリックイベントでクリップボードにコピー
 resultText.addEventListener('click', () => {
     navigator.clipboard.writeText(resultText.value)
         .then(() => {
@@ -391,7 +356,6 @@ resultText.addEventListener('click', () => {
         });
 });
 
-// ログテキストボックスのクリックイベントでコピー
 logDisplay.addEventListener('click', () => {
     navigator.clipboard.writeText(logDisplay.value)
         .then(() => {
@@ -407,48 +371,40 @@ logDisplay.addEventListener('click', () => {
         });
 });
 
-// ポップアップ表示機能
 showImageLink.addEventListener('click', (e) => {
     e.preventDefault();
     popup.classList.add('show');
 });
 
-// ポップアップ非表示機能
 closeBtn.addEventListener('click', () => {
     popup.classList.remove('show');
 });
 
-// ポップアップの背景をクリックして非表示にする機能
 popup.addEventListener('click', (e) => {
     if (e.target === popup) {
         popup.classList.remove('show');
     }
 });
 
-
-// 時刻設定UIの操作ロジック
-// マウスホイールイベントのリスナー
 timeInputs.forEach(input => {
     input.addEventListener('wheel', (event) => {
         event.preventDefault();
         let value = parseInt(input.value) || 0;
-        if (event.deltaY < 0) { // 上向きホイールで増加
+        if (event.deltaY < 0) {
             value++;
-        } else { // 下向きホイールで減少
+        } else {
             value--;
         }
 
-        // 単位に応じて値を調整
         const unit = input.id.replace('start-', '');
         if (unit === 'hour') {
             value = (value + 24) % 24;
-        } else { // minute or second
+        } else {
             value = (value + 60) % 60;
         }
         input.value = String(value).padStart(2, '0');
     });
 
-    // タッチ操作（スワイプ）のリスナー
     let touchStartY = 0;
     input.addEventListener('touchstart', (event) => {
         touchStartY = event.touches[0].clientY;
@@ -459,17 +415,16 @@ timeInputs.forEach(input => {
         const deltaY = touchEndY - touchStartY;
         let value = parseInt(input.value) || 0;
 
-        if (deltaY < -20) { // 上向きスワイプ
+        if (deltaY < -20) {
             value++;
-        } else if (deltaY > 20) { // 下向きスワイプ
+        } else if (deltaY > 20) {
             value--;
         }
 
-        // 単位に応じて値を調整
         const unit = input.id.replace('start-', '');
         if (unit === 'hour') {
             value = (value + 24) % 24;
-        } else { // minute or second
+        } else {
             value = (value + 60) % 60;
         }
         input.value = String(value).padStart(2, '0');
