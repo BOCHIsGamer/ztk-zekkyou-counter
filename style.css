@@ -1,3 +1,4 @@
+
 body {
     font-family: sans-serif;
     display: flex;
@@ -6,18 +7,15 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    /* 紫ベースの背景色に変更 */
-    background-color: #f3e5f5; /* 薄いパープル */
+    background-color: #f3e5f5;
     color: #333;
 }
 
 h1 {
-    /* 濃い紫に変更 */
     color: #6a1b9a; 
     margin-bottom: 5px;
 }
 
-/* 説明文のスタイル */
 .description {
     margin-bottom: 20px;
     font-size: 14px;
@@ -25,7 +23,7 @@ h1 {
     line-height: 1.5;
 }
 .description a {
-    color: #9c27b0; /* 紫系のリンク色 */
+    color: #9c27b0;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -58,7 +56,6 @@ h1 {
     box-sizing: border-box;
 }
 
-/* 新しいラベル部分のスタイル */
 .new-label-box {
     background-color: #fff;
     border-radius: 8px;
@@ -74,12 +71,10 @@ h1 {
 .new-label-box p {
     margin: 0;
 }
-/* これらの色は変更なし */
 .counter-group:nth-child(1) .new-label-box p { color: #004d40; }
 .counter-group:nth-child(2) .new-label-box p { color: #f57f17; }
 .counter-group:nth-child(3) .new-label-box p { color: #b71c1c; }
 .counter-group:nth-child(4) .new-label-box p { color: #1b5e20; }
-
 
 .counter {
     border-radius: 8px;
@@ -87,11 +82,9 @@ h1 {
     flex-grow: 1;
     padding: 10px 20px;
     transition: transform 0.2s ease-in-out;
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* ボタンとカウントの隙間を調整 */
     gap: 5px; 
 }
 
@@ -99,13 +92,11 @@ h1 {
     transform: scale(1.02);
 }
 
-/* 各カウンターのテーマカラー (変更なし) */
 .counter[data-id="1"] { background-color: #e0f2f7; border: 2px solid #2196f3; }
 .counter[data-id="2"] { background-color: #fffde7; border: 2px solid #ffeb3b; }
 .counter[data-id="3"] { background-color: #ffebee; border: 2px solid #f44336; }
 .counter[data-id="4"] { background-color: #e8f5e9; border: 2px solid #4caf50; }
 
-/* カウンターごとの数値の色 (変更なし) */
 .counter[data-id="1"] .count { color: #1976d2; }
 .counter[data-id="2"] .count { color: #fbc02d; }
 .counter[data-id="3"] .count { color: #d32f2f; }
@@ -122,7 +113,6 @@ h1 {
     flex-grow: 1;
 }
 
-/* ボタンのスタイル */
 .btn-plus, .btn-minus {
     font-size: 40px;
     width: 40px;
@@ -130,7 +120,7 @@ h1 {
     border: none;
     background: none;
     cursor: pointer;
-    color: #455a64; /* 変更なし */
+    color: #455a64;
     font-weight: bold;
     line-height: 1;
     padding: 0;
@@ -142,7 +132,6 @@ h1 {
     opacity: 0.7;
 }
 
-/* チェックボックスのコンテナスタイル */
 .checkbox-container {
     display: block;
     text-align: center;
@@ -157,7 +146,7 @@ h1 {
 }
 
 .checkbox-container label:hover {
-    background-color: #e0e0e0; /* 変更なし */
+    background-color: #e0e0e0;
 }
 
 .checkbox-container input[type="checkbox"] {
@@ -169,19 +158,17 @@ h1 {
 .checkbox-container span {
     display: block;
     font-size: 12px;
-    color: #999; /* 変更なし */
+    color: #999;
     user-select: none;
     margin-top: 5px;
 }
 
-/* 全クリア部分のスタイルも調整 */
 .all-clear-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
-    /* 紫系の背景色に変更 */
-    background-color: #e1bee7; /* 薄いラベンダー */
+    background-color: #e1bee7;
     padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -192,7 +179,7 @@ h1 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #e57373; /* 赤色 (変更なし) */
+    background-color: #e57373;
     color: white;
     font-weight: bold;
     font-size: 16px;
@@ -200,13 +187,12 @@ h1 {
 }
 #all-clear-btn:hover { background-color: #ef5350; }
 
-/* 新しい「元に戻す」ボタンのスタイル */
 #undo-btn {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #64b5f6; /* 青色 (変更なし) */
+    background-color: #64b5f6;
     color: white;
     font-weight: bold;
     font-size: 16px;
@@ -214,7 +200,6 @@ h1 {
 }
 #undo-btn:hover { background-color: #42a5f5; }
 
-/* 結果表示部分のスタイル */
 .result-display, .log-display-container {
     display: flex;
     flex-direction: column;
@@ -224,9 +209,9 @@ h1 {
     max-width: 400px;
     margin-top: 20px;
 }
-/* コピー説明文の配置変更に対応 */
+
 .copy-info {
-    margin-top: -10px; /* テキストボックスとの間隔を調整 */
+    margin-top: -10px;
 }
 
 #result-text {
@@ -242,14 +227,12 @@ h1 {
     user-select: none;
 }
 
-/* ログ表示用テキストボックスのスタイル */
 .log-display-container {
     margin-top: 40px;
     gap: 15px;
     text-align: center;
 }
 
-/* ログ表示部分の枠線を太くする */
 #log-display {
     width: 100%;
     padding: 10px;
@@ -257,7 +240,7 @@ h1 {
     font-size: 14px;
     border: 2px solid #ccc; 
     border-radius: 8px;
-    background-color: #f9f9f9; /* 変更なし */
+    background-color: #f9f9f9;
     cursor: pointer;
     user-select: none;
     height: 150px;
@@ -266,34 +249,28 @@ h1 {
     margin-bottom: 0;
 }
 
-/* セクションタイトルと説明文の共通スタイル */
 .section-title, .copy-info {
     text-align: center;
 }
 
-/* セクションタイトルのスタイル */
 .section-title {
     font-size: 14px;
-    color: #333; /* 変更なし */
+    color: #333;
     margin: 0;
 }
 
-/* ※から始まる説明文のスタイル */
 .copy-info {
     font-size: 12px;
-    color: #999; /* 変更なし */
+    color: #999;
     line-height: 1.5;
 }
 
-
-/* 新しいログボタンコンテナ */
 .log-buttons-container {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-/* ログクリアボタンと新規追加ボタンの共通スタイル */
 #log-and-count-clear-btn,
 #start-stream-btn {
     padding: 8px 12px;
@@ -306,27 +283,26 @@ h1 {
 }
 
 #log-and-count-clear-btn {
-    background-color: #ef9a9a; /* 赤系 (変更なし) */
+    background-color: #ef9a9a;
 }
 #log-and-count-clear-btn:hover {
     background-color: #e57373;
 }
 
 #start-stream-btn {
-    background-color: #4db6ac; /* 緑系 (変更なし) */
+    background-color: #4db6ac;
 }
 #start-stream-btn:hover {
     background-color: #26a69a;
 }
 
-/* ポップアップのスタイル */
 .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 変更なし */
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -342,7 +318,7 @@ h1 {
 }
 
 .popup-content {
-    background-color: #fff; /* 変更なし */
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     position: relative;
@@ -364,20 +340,19 @@ h1 {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    color: #aaa; /* 変更なし */
+    color: #aaa;
 }
 .close-btn:hover {
     color: #333;
 }
 
-/* 配信時間設定UIのスタイル */
 .start-time-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     margin-bottom: 5px;
-    background-color: transparent; /* 変更なし */
+    background-color: transparent;
     padding: 0;
     box-shadow: none;
     max-width: 500px;
@@ -414,24 +389,22 @@ h1 {
     padding: 2px;
     border: 1px solid #ddd;
     border-radius: 3px;
-    background-color: #f9f9f9; /* 変更なし */
+    background-color: #f9f9f9;
     -moz-appearance: textfield;
 }
 
-/* Chrome, Safari, Edgeで矢印を非表示にする */
 .time-input::-webkit-outer-spin-button,
 .time-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/* ▲▼ボタンのサイズを半分に */
 .up-btn, .down-btn {
     background: none;
     border: none;
     font-size: 9px;
     cursor: pointer;
-    color: #999; /* 変更なし */
+    color: #999;
     line-height: 0.5;
     padding: 0 5px;
 }
@@ -444,52 +417,45 @@ h1 {
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    /* 紫系のボタン色に変更 */
-    background-color: #e0b0e0; /* 薄いラベンダー */
-    color: #4a148c; /* 濃い紫 */
+    background-color: #e0b0e0;
+    color: #4a148c;
     font-weight: normal;
     font-size: 12px;
     transition: background-color 0.2s ease-in-out;
 }
 #set-start-time-btn:hover {
-    background-color: #d8a0d8; /* ホバーで少し濃く */
+    background-color: #d8a0d8;
 }
 
-/* 日付表示のスタイル */
 #start-date-display {
     font-size: 16px;
-    color: #aaa; /* 変更なし */
-    /* 日付と時刻の行を揃えるために調整 */
-    line-height: 38px; /* 入力ボックスの高さに合わせて調整 */
+    color: #aaa;
+    line-height: 38px;
     height: 38px;
     display: flex;
     align-items: center;
 }
 
-/* コロンのスタイル */
 .colon {
     font-size: 20px;
-    color: #333; /* 変更なし */
+    color: #333;
     font-weight: bold;
     line-height: 38px;
 }
 
-/* 新しい説明文のスタイル */
 #swipe-info {
     font-size: 12px;
-    color: #999; /* 変更なし */
+    color: #999;
     margin-top: -5px;
     margin-bottom: 5px;
 }
 
-/* 画面上部に表示するメッセージのスタイル */
 .popup-message {
     position: fixed;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    /* 紫系の背景色に変更 */
-    background-color: rgba(123, 31, 162, 0.9); /* 濃いめの紫 */
+    background-color: rgba(123, 31, 162, 0.9);
     color: #fff;
     padding: 10px 20px;
     border-radius: 8px;
@@ -504,50 +470,166 @@ h1 {
     visibility: visible;
 }
 
-/* スマートフォンでの表示を最適化 */
-@media (max-width: 768px) {
-    body {
-        /* 全体を75%に縮小し、上部中央を基準にする */
-        transform: scale(0.75);
-        transform-origin: top center;
-        width: 133.33%; /* 縮小率の逆数 (1 / 0.75) で横幅を広げる */
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden; /* 横スクロールバーを非表示にする */
+/* 縦幅が短い時のコンパクト表示（PC用） - 優先度高 */
+@media (max-height: 400px) and (min-width: 701px), (max-height: 400px) and (max-width: 700px) and (pointer: fine) {
+    h1, .description, .all-clear-container, .log-display-container {
+        display: none;
     }
-
-    h1 {
-        font-size: 28px;
+    
+    .main-container {
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-start;
     }
-
-    .description {
-        font-size: 16px;
+    
+    .counters-list {
+        flex-direction: row;
+        gap: 5px;
     }
     
     .counter-group {
-        padding: 15px;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
     }
-
-    .new-label-box p {
-        font-size: 20px;
-        min-width: 120px;
+    
+    .new-label-box {
+        display: none;
     }
-
-    .count {
-        font-size: 48px;
+    
+    .counter {
+        padding: 0;
+        background: none !important;
+        border: none !important;
+        min-width: auto;
+        flex-grow: 0;
+        order: 2;
     }
-
+    
     .btn-plus, .btn-minus {
-        font-size: 32px;
+        display: none;
     }
-
-    #undo-btn, #all-clear-btn {
-        font-size: 14px;
-        padding: 8px 16px;
+    
+    .count {
+        font-size: 40px;
+        height: auto;
+        flex-grow: 0;
+        min-width: auto;
     }
+    
+    .count::before {
+        content: '';
+        display: block;
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+    
+    .counter[data-id="1"] .count::before { content: "🥶"; }
+    .counter[data-id="2"] .count::before { content: "⚡️"; }
+    .counter[data-id="3"] .count::before { content: "🥵"; }
+    .counter[data-id="4"] .count::before { content: "🌿"; }
+    
+    .checkbox-container {
+        order: 3;
+    }
+    
+    .checkbox-container label {
+        padding: 0;
+    }
+    
+    .checkbox-container span {
+        display: none;
+    }
+    
+    .checkbox-container input[type="checkbox"] {
+        transform: scale(1.5);
+    }
+    
+    .result-display {
+        margin-top: 0;
+        max-width: 200px;
+    }
+    
+    #result-text {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
 
-    .log-buttons-container button {
-        font-size: 12px;
-        padding: 6px 10px;
+/* 横幅が短い時のコンパクト表示（PC用のみ） */
+@media (max-width: 700px) and (pointer: fine) and (min-height: 401px) {
+    h1, .description, .all-clear-container, .log-display-container {
+        display: none;
+    }
+    
+    .counters-list {
+        gap: 10px;
+    }
+    
+    .counter-group {
+        background-color: transparent;
+        box-shadow: none;
+        padding: 10px 0;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .new-label-box {
+        display: none;
+    }
+    
+    .counter {
+        padding: 0;
+        background: none !important;
+        border: none !important;
+        min-width: auto;
+        flex-grow: 0;
+    }
+    
+    .btn-plus, .btn-minus {
+        display: none;
+    }
+    
+    .count {
+        font-size: 40px;
+        height: auto;
+        flex-grow: 0;
+        min-width: auto;
+    }
+    
+    .count::before {
+        font-size: 30px;
+        margin-right: 5px;
+    }
+    
+    .counter[data-id="1"] .count::before { content: "🥶"; }
+    .counter[data-id="2"] .count::before { content: "⚡️"; }
+    .counter[data-id="3"] .count::before { content: "🥵"; }
+    .counter[data-id="4"] .count::before { content: "🌿"; }
+    
+    .checkbox-container label {
+        padding: 0;
+    }
+    
+    .checkbox-container span {
+        display: none;
+    }
+    
+    .checkbox-container input[type="checkbox"] {
+        transform: scale(1.5);
+    }
+    
+    .result-display {
+        margin-top: 20px;
+        max-width: 200px;
+    }
+    
+    #result-text {
+        font-size: 16px;
+        padding: 8px;
     }
 }
